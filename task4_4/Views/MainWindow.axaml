@@ -1,0 +1,72 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:task4_4.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="task4_4.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="task4_4">
+
+    <Design.DataContext>
+		<vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+	<Grid RowDefinitions="auto,auto, auto">
+		<Menu Grid.Row="0" BorderThickness="0, 2, 0, 2" BorderBrush="Black">
+			<MenuItem Header="_Home"/>
+			<MenuItem Header="_About"/>
+			<MenuItem Header="_Blog's Main Topic 1"/>
+			<MenuItem Header="_Blog's Main Topic 2"/>
+			<MenuItem Header="_Blog's Main Topic 3"/>
+			<MenuItem Header="_Associated Blogs"/>
+			<MenuItem Header="RSS" Margin="300, 0, 0, 0"/>
+		</Menu>
+		<Grid Grid.Row="1" RowDefinitions="auto" ColumnDefinitions="750,200">
+			<StackPanel Grid.Column="0" Grid.Row="1" HorizontalAlignment="Stretch" Name="StackPanel1"
+					VerticalAlignment="Center"
+					Orientation="Horizontal">
+				<ItemsControl
+						   ItemsSource="{Binding Articles}">
+					<ItemsControl.ItemTemplate>
+						<DataTemplate>
+							<Grid RowDefinitions="auto,auto,auto" ColumnDefinitions="auto, auto">
+								<TextBlock Margin="10" Grid.Row="0" Text="{Binding Title}"/>
+								<TextBlock Margin="10" Grid.Row="1" Text="{Binding Text}"/>
+								<TextBlock Margin="10" Grid.Row="2" Grid.Column="0" Text="{Binding Author}"/>
+								<TextBlock Margin="10" Grid.Row="2" Grid.Column="1" Text="{Binding Time}"/>
+							</Grid>
+						</DataTemplate>
+					</ItemsControl.ItemTemplate>
+				</ItemsControl>
+			</StackPanel>
+			<StackPanel Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" Name="StackPanel2"
+				VerticalAlignment="Center"
+				Orientation="Horizontal">
+				<ItemsControl
+						   ItemsSource="{Binding News}">
+					<ItemsControl.ItemTemplate>
+						<DataTemplate>
+							<Grid RowDefinitions="auto,auto,auto" ColumnDefinitions="auto, auto">
+								<TextBlock Margin="10" Grid.Row="0" Text="{Binding Title}"/>
+								<TextBlock Margin="10" Grid.Row="1" Text="{Binding Text}"/>
+								<TextBlock Margin="10" Grid.Row="2" Grid.Column="0" Text="{Binding Author}"/>
+								<TextBlock Margin="10" Grid.Row="2" Grid.Column="1" Text="{Binding Time}"/>
+							</Grid>
+						</DataTemplate>
+					</ItemsControl.ItemTemplate>
+				</ItemsControl>
+			</StackPanel>
+		</Grid>
+		<Menu Grid.Row="2">
+			<TextBlock>Tags:</TextBlock>
+			<MenuItem Header="Tag1"/>
+			<MenuItem Header="Tag2"/>
+			<MenuItem Header="Tag3"/>
+			<MenuItem Header="Tag4"/>
+		</Menu>
+	</Grid>
+
+
+</Window>
